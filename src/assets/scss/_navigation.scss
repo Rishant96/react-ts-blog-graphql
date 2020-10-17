@@ -19,6 +19,24 @@
     display: flex;
     align-items: center;
     margin-right: 30px;
+
+    .ant-avatar {
+      background: $background;
+      border: 1px solid $border;
+    }
+
+    .menu-avatar-name {
+      font-size: 18px;
+      margin-left: 15px;
+    }
+
+    .ion-ios-menu {
+      font-size: 36px;
+      width: 65px;
+      align-items: center;
+      cursor: pointer;
+      display: none;
+    }
   }
 
   ul {
@@ -39,6 +57,16 @@
 
       &:hover {
         color: $text-link;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .site-navigation {
+    .menu-content-container {
+      .ion-ios-menu {
+        display: flex;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Avatar } from 'antd'
 
@@ -26,7 +26,18 @@ const navLinks: NavLink[] = [
   },
 ]
 
-const Navigation: React.FC = () => {
+export interface NavigationProps {
+  user: {
+    firstName: string
+    lastName: string
+  }
+}
+
+const Navigation: React.FC<NavigationProps> = ({ user }) => {
+  const [menuActive, setMenuActive] = useState(false)
+
+  const toggleMenu = () => setMenuActive(!menuActive)
+
   return (
     <nav className="site-navigation" role="navigation">
       <span className="menu-title">My React Blog</span>
@@ -38,7 +49,14 @@ const Navigation: React.FC = () => {
             </li>
           ))}
         </ul>
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <span>
+          <Avatar
+            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            size={38}
+          />
+          <span className="menu-avatar-name">{`${user.firstName} ${user.lastName}`}</span>
+        </span>
+        <i className="ionicons icon ion-ios-menu" onClick={toggleMenu} />
       </div>
     </nav>
   )
